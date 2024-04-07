@@ -12,7 +12,12 @@ const app = express();
 
 // MORE MIDDLEWARE for POST and PATCH or PUT, send we are sending data to the server
 app.use(express.json());
-app.use(cors())
+
+let corsOptions = {
+  origin: ['https://loquacious-melomakarona-4e7ee0.netlify.app', 'http://localhost:5173']
+}
+
+app.use(cors(corsOptions))
 
 // middleware
 app.use((req, res, next) => {
@@ -33,7 +38,7 @@ mongoose.connect(process.env.MONGO_URI)
   // listen for request
   app.listen(port, () => {
   console.log('Connected to DB and listening on PORT ' + port);
-})
+  })
 })
 .catch((error) => {
   console.log(error)
