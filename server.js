@@ -25,13 +25,14 @@ app.use((req, res, next) => {
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
 
+const port = process.env.PORT || 3000;
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
   // listen for request
-  app.listen(process.env.PORT, () => {
-  console.log('Connected to DB and listening on port ' + process.env.PORT);
+  app.listen(port, () => {
+  console.log('Connected to DB and listening on port ' + port);
 })
 })
 .catch((error) => {
