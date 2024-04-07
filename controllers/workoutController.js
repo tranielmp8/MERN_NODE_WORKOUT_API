@@ -30,7 +30,7 @@ const getWorkout = async (req, res) => {
 
 // CREATE/POST new workout
 const createWorkout = async (req, res) => {
-  const {title, load, reps} = req.body;
+  const {title, load, sets, reps} = req.body;
 
   // creating our own error and error checks
   let emptyFields = []
@@ -40,6 +40,9 @@ const createWorkout = async (req, res) => {
   }
   if(!load) {
     emptyFields.push('load')
+  }
+  if(!sets) {
+    emptyFields.push('sets')
   }
   if(!reps) {
     emptyFields.push('reps')
@@ -54,6 +57,7 @@ const createWorkout = async (req, res) => {
     const workout = await Workout.create({
       title, 
       load,
+      sets,
       reps,
       user_id
     })
