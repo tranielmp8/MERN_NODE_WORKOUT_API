@@ -25,10 +25,10 @@ app.use((req, res, next) => {
 app.use('/api/workouts', workoutRoutes);
 app.use('/api/user', userRoutes);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 // connect to db
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(port)
 .then(() => {
   // listen for request
   app.listen(port, () => {
