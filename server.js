@@ -25,6 +25,13 @@ app.use((req, res, next) => {
   next();
 })
 
+//testing the server
+app.get('/', (req, res) => {
+  res.json({
+    mssg: 'Add this to the end to go to the app /api/workouts'
+  })
+})
+
 
 // routes 
 app.use('/api/workouts', workoutRoutes);
@@ -49,7 +56,7 @@ mongoose.connect(process.env.MONGO_URI)
 /* not needed anymore this was just to test the api
 // app.get('/', (req, res) => {
 //   res.json({
-//     mssg: 'Welcome to the app'
+//     mssg: 'Add this to the end to go to the app /api/workouts'
 //   })
 // })
 */
